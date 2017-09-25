@@ -1,0 +1,26 @@
+{
+    "log": {
+        "level": "trace", 
+        "sinks": [
+            {
+                "sink": {
+                    "level": "trace", 
+                    "type": "stdout_sink_mt"
+                }
+            }, 
+            {
+                "sink": {
+                    "file_name": "logs/zap.log", 
+                    "max_file_size": 5000000, 
+                    "max_files": 10, 
+                    "type": "rotating_file_sink_mt"
+                }
+            }
+        ]
+    }, 
+    "zap": {
+        "backend": "@tcp://*:9981", 
+        "frontend": "@tcp://*:9980", 
+        "type": "Streamer"
+    }
+}

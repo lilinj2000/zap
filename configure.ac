@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.63])
-AC_INIT(zod, 0.1, lilinj2000@gmail.com)
+AC_INIT(zap, 0.1, lilinj2000@gmail.com)
 AC_CONFIG_SRCDIR([])
 #AC_CONFIG_HEADERS([config.h])
 
@@ -80,7 +80,6 @@ BOOST_CPPFLAGS="-I$BOOST_HOME/include -DBOOST_ALL_DYN_LINK"
 BOOST_LIBADD=" \
 	      $BOOST_HOME/lib/libboost_filesystem.so \
 	      $BOOST_HOME/lib/libboost_regex.so \
-	      $BOOST_HOME/lib/libboost_thread.so \
 	      $BOOST_HOME/lib/libboost_system.so"
 AC_SUBST(BOOST_CPPFLAGS)
 AC_SUBST(BOOST_LIBADD)
@@ -119,9 +118,19 @@ AC_ARG_WITH([spdlog],
     [SPDLOG_HOME="$withval"],
     [SPDLOG_HOME="$SPDLOG_HOME"])
 AC_SUBST([SPDLOG_HOME])
-
 SPDLOG_CPPFLAGS="-I$SPDLOG_HOME/include -DSPDLOG_FMT_EXTERNAL"
 AC_SUBST(SPDLOG_CPPFLAGS)
+
+dnl args lib
+ARGS_HOME=$home_3rd/args
+AC_ARG_WITH([args], 
+    [AS_HELP_STRING([--with-args],
+        [home path of the args, defaults to $ARGS_HOME])],
+    [ARGS_HOME="$withval"],
+    [ARGS_HOME="$ARGS_HOME"])
+AC_SUBST([ARGS_HOME])
+ARGS_CPPFLAGS="-I$ARGS_HOME/include"
+AC_SUBST(ARGS_CPPFLAGS)
 
 dnl soil lib
 AC_ARG_WITH([soil],

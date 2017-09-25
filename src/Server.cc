@@ -58,7 +58,7 @@ void Server::streamerProxy() {
 void Server::sharedQueueProxy() {
   SOIL_TRACE("Server::sharedQueueProxy()");
 
-  zstr_sendx(proxy_, "FRONTEND", "ROUTE",
+  zstr_sendx(proxy_, "FRONTEND", "ROUTER",
              options_->frontend.data(), nullptr);
   zsock_wait(proxy_);
   zstr_sendx(proxy_, "BACKEND", "DEALER",

@@ -13,12 +13,14 @@ zap_CPPFLAGS =  \
 		$(RAPIDJSON_CPPFLAGS) \
 		$(FMT_CPPFLAGS) \
 		$(SPDLOG_CPPFLAGS) \
+		$(ARGS_CPPFLAGS) \
 		$(CZMQ_CPPFLAGS)
 
 zap_LDADD = \
 	$(BOOST_LIBADD) \
 	$(SOIL_LIBADD) \
-	$(CZMQ_LIBADD)
+	$(CZMQ_LIBADD) \
+	$(FMT_LIBADD)
 
 
 zap_LDFLAGS = $(LIBADD_DL) -Wl,--no-as-needed -pthread
